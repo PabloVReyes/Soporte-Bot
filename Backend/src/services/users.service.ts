@@ -7,9 +7,9 @@ const phone = (jid: string) => {
 
 export const getUsersService = async () => {
     const data: any = await getUsersQuery()
-    const allUsers = [];
+    const allUsers: any = [];
 
-    data.map((item) => {
+    data.map((item: any) => {
         const Data = {
             phone: phone(item.id),
             matricula: item.matricula,

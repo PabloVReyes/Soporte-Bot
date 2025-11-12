@@ -62,7 +62,7 @@ export const getIsTechnicalNotAssigned = async (phone: string) => {
 
         // Si tiene un servicio activo → no está libre
         return !activeService;
-    } catch (error) {
+    } catch (error: any) {
         console.error("Error al verificar si el técnico está libre:", error);
         return false;
     }

@@ -11,8 +11,8 @@ export const getServicesService = async ({ page, limit }: Props) => {
 
     const data: any = await getServicesQuery({ skip, take })
 
-    const AllServices = [];
-    data.map((item) => {
+    const AllServices: any = [];
+    data.map((item: any) => {
         let status = "CREATED"
         if (item.assignedAt) status = "ASSIGNED"
         if (item.concludedAt) status = "CONCLUDED"
@@ -43,9 +43,9 @@ export const getServicesCountService = async () => {
 
 export const getServicesCountByTechAndDayService = async () => {
     const data: any = await getServicesCountByTechAndDayQuery()
-    const allData = []
+    const allData: any = []
 
-    data.map((item) => {
+    data.map((item: any) => {
         const fecha = new Date(item.date)
         const formato = fecha.toLocaleDateString("es-MX", {
             day: "numeric",
@@ -68,9 +68,9 @@ export const getServicesCountByTechAndDayService = async () => {
 
 export const getServicesCountByDayService = async () => {
     const data: any = await getServicesCountByDayQuery()
-    const allData = [];
+    const allData: any = [];
 
-    data.map((item) => {
+    data.map((item: any) => {
         const fecha = new Date(item.date)
         const formato = fecha.toLocaleDateString("es-MX", {
             day: "numeric",

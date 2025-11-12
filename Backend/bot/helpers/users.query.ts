@@ -1,5 +1,4 @@
 import { database } from "@/database/config"
-import { saveUserDataQueryProps } from "bot/types"
 
 export const getUserDataQuery = async (phone: string) => {
     try {
@@ -25,7 +24,7 @@ export const getUserDataQuery = async (phone: string) => {
 }
 
 // Guardar datos del usuario
-export const updateUserDataQuery = async (phone, data: Record<string, any>) => {
+export const updateUserDataQuery = async (phone: any, data: Record<string, any>) => {
     try {
         const user = await database.user.update({
             where: { id: phone },

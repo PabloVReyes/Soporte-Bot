@@ -58,7 +58,7 @@ export const updateTechnicalQuery = ({ name, workingHours }: { name: string, wor
                 include: { WorkingHours: true },
             })
             resolve(true)
-        } catch (error) {
+        } catch (error: any) {
             console.error(error.message)
             reject(false)
         }

@@ -17,7 +17,7 @@ import { detectCommand } from "./utils/detect-commands";
 
 export const bot = async () => {
     const AUTH_DIR = `${process.env.AUTH_DIR}`
-    const RECONNECT_DELAY = parseInt(process.env.RECONNECT_DELAY)
+    const RECONNECT_DELAY = Number(process.env.RECONNECT_DELAY)
 
     console.log("🚀 Iniciando bot de WhatsApp...");
 

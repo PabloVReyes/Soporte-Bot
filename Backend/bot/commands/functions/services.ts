@@ -6,8 +6,8 @@ import { Messages } from "bot/messages";
 import { isWithinWorkingHours } from "bot/utils/working-hours";
 
 interface Props {
-    phone?: string
-    message?: string
+    phone: string
+    message: string
     sock?: any
 }
 
@@ -40,7 +40,7 @@ export const newService = async ({ message, phone, sock }: Props) => {
         return Messages.service.new.error.technical
     }
 
-    const technical = technicals[Math.floor(Math.random() * technicals.length)]
+    const technical: any = technicals[Math.floor(Math.random() * technicals.length)]
 
     await updateServiceQuery(service.id, { technicalId: technical.id, assignedAt: new Date() })
 
@@ -63,7 +63,7 @@ export const newService = async ({ message, phone, sock }: Props) => {
 
 export const concludedService = async ({ phone, sock }: Props) => {
     // Comprobar si existe un servicio activo
-    const service = await getServiceAssigned(phone)
+    const service: any = await getServiceAssigned(phone)
 
     if (!service) {
         return Messages.service.concluded.error.assigned
@@ -123,7 +123,7 @@ export const concludedService = async ({ phone, sock }: Props) => {
 ///////////////////////
 
 export const canceledService = async ({ phone, sock }: Props) => {
-    const service = await getServiceCanceledQuery(phone)
+    const service: any = await getServiceCanceledQuery(phone)
     if (!service) {
         return Messages.service.canceled.error
     }
@@ -208,7 +208,7 @@ export const pauseService = async ({ phone, sock }: Props) => {
 ////////////////////////
 
 export const resumeService = async ({ phone, sock }: Props) => {
-    const service = await getLastPausedServiceQuery(phone)
+    const service: any = await getLastPausedServiceQuery(phone)
 
     if (!service) {
         return Messages.service.resume.error
