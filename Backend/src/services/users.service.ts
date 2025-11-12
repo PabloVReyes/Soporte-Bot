@@ -1,4 +1,4 @@
-import { getUsersQuery } from "@/helpers/user.query"
+import { getUsersQuery } from "../helpers/user.query"
 
 const phone = (jid: string) => {
     const numbers = jid.split('@')[0].replace(/\D/g, ''); // parte antes de @, solo dígitos

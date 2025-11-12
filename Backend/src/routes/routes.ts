@@ -1,7 +1,7 @@
 import { Router } from "express";
-import userRoutes from "@/routes/users.routes"
-import servicesRoutes from "@/routes/services.routes"
-import technicalRoutes from "@/routes/technicals.routes"
+import userRoutes from "../routes/users.routes"
+import servicesRoutes from "../routes/services.routes"
+import technicalRoutes from "../routes/technicals.routes"
 
 const router: Router = Router()
 

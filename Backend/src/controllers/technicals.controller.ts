@@ -1,4 +1,4 @@
-import { getTechnicalsService, updateTechnicalService } from "@/services/technicals.service"
+import { getTechnicalsService, updateTechnicalService } from "../services/technicals.service"
 import { RequestHandler } from "express"
 
 export const getTechnicalsController: RequestHandler = async (respuest, response) => {

@@ -1,4 +1,4 @@
-import { getServicesController, getServicesCountByDayController, getServicesCountByTechANdDayController, getServicesCountController } from "@/controllers/services.controller";
+import { getServicesController, getServicesCountByDayController, getServicesCountByTechANdDayController, getServicesCountController } from "../controllers/services.controller";
 import { Router } from "express";
 
 const router: Router = Router()

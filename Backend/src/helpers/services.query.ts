@@ -1,4 +1,4 @@
-import { database } from "@/database/config"
+import { database } from "../database/config"
 
 interface Props {
     skip: number;
@@ -57,7 +57,7 @@ export const getServicesCountByTechAndDayQuery = () => {
   ORDER BY date ASC;
 `;
 
-            const fixed = result.map(r => ({
+            const fixed = result.map((r: any) => ({
                 ...r,
                 total: Number(r.total),
             }));
@@ -84,7 +84,7 @@ export const getServicesCountByDayQuery = async () => {
       ORDER BY date ASC;
     `;
 
-        const fixed = result.map(r => ({
+        const fixed = result.map((r: any) => ({
             ...r,
             total: Number(r.total),
         }));

@@ -1,4 +1,4 @@
-import { getServicesCountByDayQuery, getServicesCountByTechAndDayQuery, getServicesCountQuery, getServicesQuery } from "@/helpers/services.query"
+import { getServicesCountByDayQuery, getServicesCountByTechAndDayQuery, getServicesCountQuery, getServicesQuery } from "../helpers/services.query"
 
 interface Props {
     page: string;

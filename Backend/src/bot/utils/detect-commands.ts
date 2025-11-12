@@ -1,4 +1,4 @@
-import { commands } from "bot/commands";
+import { commands } from "../../bot/commands";
 
 export const detectCommand = async (rol: string, text: string) => {
     const allCommands = await commands(rol)

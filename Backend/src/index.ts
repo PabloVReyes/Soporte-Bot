@@ -6,10 +6,11 @@ import responseTime from 'response-time';
 import path from "path";
 import fs from 'fs';
 import morgan from 'morgan';
-import { bot } from "bot";
 import { initSocket } from "./socket";
+import { bot } from "./bot";
 require('dotenv').config();
 var colors = require('colors');
+import 'module-alias/register';
 
 colors.setTheme({
     silly: 'rainbow',

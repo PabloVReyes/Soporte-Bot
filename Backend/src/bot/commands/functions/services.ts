@@ -1,9 +1,9 @@
-import { io } from "@/socket";
-import { getLastPausedServiceQuery, getPausedServiceQuery, getServiceAssigned, getServiceCanceledQuery, getServicesNotAssigned, saveServiceQuery, updateServiceQuery } from "bot/helpers/services.query";
-import { getIsTechnicalNotAssigned, getTechnicalsNotAssignedQuery } from "bot/helpers/technicals.query";
-import { updateUserDataQuery } from "bot/helpers/users.query";
-import { Messages } from "bot/messages";
-import { isWithinWorkingHours } from "bot/utils/working-hours";
+import { io } from "../../../socket";
+import { getLastPausedServiceQuery, getPausedServiceQuery, getServiceAssigned, getServiceCanceledQuery, getServicesNotAssigned, saveServiceQuery, updateServiceQuery } from "../../../bot/helpers/services.query";
+import { getIsTechnicalNotAssigned, getTechnicalsNotAssignedQuery } from "../../../bot/helpers/technicals.query";
+import { updateUserDataQuery } from "../../../bot/helpers/users.query";
+import { Messages } from "../../../bot/messages";
+import { isWithinWorkingHours } from "../../../bot/utils/working-hours";
 
 interface Props {
     phone: string

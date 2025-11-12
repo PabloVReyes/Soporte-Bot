@@ -1,4 +1,4 @@
-import { getServicesCountByDayService, getServicesCountByTechAndDayService, getServicesCountService, getServicesService } from "@/services/services.service";
+import { getServicesCountByDayService, getServicesCountByTechAndDayService, getServicesCountService, getServicesService } from "../services/services.service";
 import { RequestHandler } from "express";
 
 export const getServicesController: RequestHandler = async (request, response) => {

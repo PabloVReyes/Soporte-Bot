@@ -1,4 +1,4 @@
-import { getTechnicalsQuery, updateTechnicalQuery } from "@/helpers/technical.query";
+import { getTechnicalsQuery, updateTechnicalQuery } from "../helpers/technical.query";
 
 const phone = (jid: string) => {
     const numbers = jid.split('@')[0].replace(/\D/g, ''); // parte antes de @, solo dígitos

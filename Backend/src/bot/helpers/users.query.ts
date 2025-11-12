@@ -1,4 +1,4 @@
-import { database } from "@/database/config"
+import { database } from "../../database/config"
 
 export const getUserDataQuery = async (phone: string) => {
     try {

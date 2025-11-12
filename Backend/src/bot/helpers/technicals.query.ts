@@ -1,4 +1,4 @@
-import { database } from "@/database/config";
+import { database } from "../../database/config";
 
 export const getTechnicalsNotAssignedQuery = async (excludeTechnicalId?: number) => {
     const now = new Date();
@@ -29,8 +29,8 @@ export const getTechnicalsNotAssignedQuery = async (excludeTechnicalId?: number)
         }
     })
 
-    const availableTechnicians = Technicians.filter(t => {
-        const todayWorkingHours = t.WorkingHours.find(wh => wh.dayOfWeek === currentDay);
+    const availableTechnicians = Technicians.filter((t: any) => {
+        const todayWorkingHours = t.WorkingHours.find((wh: any) => wh.dayOfWeek === currentDay);
 
         if (!todayWorkingHours) {
             return false; // No working hours defined for today

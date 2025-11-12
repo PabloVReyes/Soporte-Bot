@@ -1,4 +1,4 @@
-import { getTechnicalsController, updateTechnicalController } from "@/controllers/technicals.controller";
+import { getTechnicalsController, updateTechnicalController } from "../controllers/technicals.controller";
 import { Router } from "express";
 
 const router: Router = Router()

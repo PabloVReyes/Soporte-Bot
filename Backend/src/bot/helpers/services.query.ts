@@ -1,4 +1,4 @@
-import { database } from "@/database/config"
+import { database } from "../../database/config"
 
 interface Props {
     phone: string;

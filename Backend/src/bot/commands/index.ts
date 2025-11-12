@@ -1,4 +1,4 @@
-import { allCommandsProps } from "bot/types";
+import { allCommandsProps } from "../types";
 import { getCommandsByRol } from "./functions/commands";
 import { canceledService, concludedService, pauseService, resumeService, startNewService } from "./functions/services";
 

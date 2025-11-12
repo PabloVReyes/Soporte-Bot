@@ -1,5 +1,5 @@
-import { getUsersService } from "@/services/users.service"
-import { io } from "@/socket"
+import { getUsersService } from "../services/users.service"
+import { io } from "../socket"
 import { RequestHandler } from "express"
 
 export const getUsersController: RequestHandler = async (request, response) => {
