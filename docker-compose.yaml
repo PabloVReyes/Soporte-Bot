@@ -1,17 +1,43 @@
+version: "3.9"
+
 services:
-    mysql:
-        image: mysql:9.2.0
-        container_name: whatsapp-db
-        restart: always
-        environment:
-            MYSQL_ROOT_PASSWORD: SG9sYU11bmRv*
-            MYSQL_DATABASE: whatsapp
-            MYSQL_USER: soporte
-            MYSQL_PASSWORD: soptec1035
-        ports:
-            - "3308:3306"
-        volumes:
-            - mysql_data:/var/lib/mysql
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./backend
+    container_name: backend_app
+    restart: always
+    environment:
+      DATABASE_URL: mysql://user:userpassword@mysql:3306/mydb
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    command: ["yarn", "start"] # o "yarn", "dev" para desarrollo
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend_app
+    restart: always
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
 
 volumes:
-    mysql_data:
+  mysql_data:
