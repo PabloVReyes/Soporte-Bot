@@ -10,8 +10,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mantine/charts": "^8.3.6",
+    "@mantine/core": "^8.3.5",
+    "@mantine/dates": "^8.3.7",
+    "@mantine/form": "^8.3.7",
+    "@mantine/hooks": "^8.3.5",
+    "@mantine/notifications": "^8.3.6",
+    "@tabler/icons-react": "^3.35.0",
+    "axios": "^1.13.1",
+    "dayjs": "^1.11.19",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.4",
+    "recharts": "^3.3.0",
+    "socket.io-client": "^4.8.1",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

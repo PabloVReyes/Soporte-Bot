@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id               String         @id @unique
+    name             String?        @db.Char(50)
+    // Datos del usuario
+    matricula        String?        @unique @db.Char(4)
+    area             String?        @db.Char(50)
+    ext              String?        @db.Char(4)
+    ip               String?        @db.Char(50)
+    // Rol del usuario
+    rol              Rol?           @relation(fields: [rolId], references: [id])
+    rolId            String?
+    // Service
+    ServiceRequest   Service[]      @relation("UserRequests")
+    ServiceAssigned  Service[]      @relation("TechnicalAssigned")
+    // Fechas
+    createdAt        DateTime       @default(now())
+    updatedAt        DateTime?
+    register_step    Int            @default(0)
+    conversationStep String?
+    WorkingHours     WorkingHours[]
+}
+
+model WorkingHours {
+    id            Int      @id @default(autoincrement())
+    userId        String
+    dayOfWeek     String   @db.VarChar(10) // e.g., "MONDAY", "TUESDAY"
+    checkInTime   DateTime @db.Time()
+    departureTime DateTime @db.Time()
+
+    user User @relation(fields: [userId], references: [id])
+
+    @@unique([userId, dayOfWeek]) // Composite unique key
+}
+
+model Rol {
+    id   String @id @default(uuid())
+    name String @unique @db.Char(50)
+    User User[]
+}
+
+model Service {
+    id          Int       @id @default(autoincrement())
+    description String    @db.LongText
+    user        User      @relation("UserRequests", fields: [userId], references: [id])
+    userId      String
+    technical   User?     @relation("TechnicalAssigned", fields: [technicalId], references: [id])
+    technicalId String?
+    createdAt   DateTime  @default(now())
+    assignedAt  DateTime?
+    concludedAt DateTime?
+    canceledAt  DateTime?
+    pausedAt    DateTime?
+}

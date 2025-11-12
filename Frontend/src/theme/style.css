@@ -1,0 +1,182 @@
+/* Pagina */
+body {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-5));
+}
+
+/* Cuerpo */
+main {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding-left: 0;
+}
+
+/* Nabvar */
+.navbar {
+    height: 100vh;
+    min-width: 300px;
+    padding: var(--mantine-spacing-md);
+    display: flex;
+    flex-direction: column;
+    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
+    padding-bottom: 0;
+}
+
+.navbar-header {
+    padding: var(--mantine-spacing-md);
+    padding-top: 0;
+    margin-left: calc(var(--mantine-spacing-md) * -1);
+    margin-right: calc(var(--mantine-spacing-md) * -1);
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+    border-bottom: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+}
+
+.navbar-links {
+    margin-top: 10px;
+    flex: 1;
+}
+
+.linksInner {
+    padding-top: var(--mantine-spacing-xl);
+    padding-bottom: var(--mantine-spacing-xl);
+}
+
+.footer {
+    margin-left: calc(var(--mantine-spacing-md) * -1);
+    margin-right: calc(var(--mantine-spacing-md) * -1);
+    border-top: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+}
+
+.control {
+    font-weight: 500;
+    display: block;
+    height: 50px;
+    width: 100%;
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+    color: var(--mantine-color-text);
+    font-size: var(--mantine-font-size-sm);
+    border-radius: var(--mantine-radius-md);
+}
+
+.control[data-active],
+.control[data-active]:hover {
+    box-shadow: var(--mantine-shadow-sm);
+    background-color: light-dark(var(--mantine-primary-color-6), var(--mantine-primary-color-8));
+    color: var(--mantine-color-white);
+}
+
+.control:hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
+}
+
+.link {
+    font-weight: 500;
+    display: block;
+    text-decoration: none;
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+    padding-left: var(--mantine-spacing-md);
+    margin-left: var(--mantine-spacing-xl);
+    margin-right: var(--mantine-spacing-xl);
+    font-size: var(--mantine-font-size-sm);
+    color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+    border-left: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+}
+
+.link:hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
+}
+
+.link[data-active],
+.link[data-active]:hover {
+    color: var(--mantine-primary-color-light-color);
+}
+
+.chevron {
+    transition: transform 200ms ease;
+}
+
+.user {
+    display: block;
+    width: 100%;
+    padding: var(--mantine-spacing-md);
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
+}
+
+.user:hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
+}
+
+.navbarMinimal {
+    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
+    width: 80px;
+    height: 100vh;
+    padding: var(--mantine-spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+}
+
+.navbarMinimalMain {
+    flex: 1;
+    margin-top: 10px;
+}
+
+.navbarMinimallink {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--mantine-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))
+}
+
+.navbarMinimallink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    color: var(--mantine-color-text);
+}
+
+.navbarMinimallink:hover,
+.navbarMinimallink[data-expanded="true"] {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
+}
+
+.navbarMinimallink[data-active="true"] {
+    background-color: light-dark(var(--mantine-primary-color-6), var(--mantine-primary-color-8));
+    color: var(--mantine-color-white);
+    box-shadow: var(--mantine-shadow-sm);
+}
+
+.navbarMinimallinks[data-active] {
+    color: var(--mantine-primary-color-light-color);
+}
+
+.navbarMinimallinks:hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
+}
+
+.section {
+    border-bottom: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    padding-top: var(--mantine-spacing-md);
+    padding-left: var(--mantine-spacing-md);
+    padding-right: var(--mantine-spacing-md);
+    padding-bottom: var(--mantine-spacing-md);
+}
+
+.action {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-5));
+
+    &hover {
+        background-color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-6));
+    }
+}

@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8
+    container_name: soporte_tecnico_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: soporte_tecnico
+      MYSQL_USER: soporte
+      MYSQL_PASSWORD: soptec1035
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql   # Volumen nombrado
+
+volumes:
+  db_data: {}   # ← aquí defines el volumen
