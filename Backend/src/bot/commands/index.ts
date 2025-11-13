@@ -6,7 +6,7 @@ export const allCommands: allCommandsProps[] = [
     {
         name: "Solicitar Servicio",
         description: "Solicitar apoyo con un servicio",
-        key: ["nuevo servicio"],
+        key: ["nuevo servicio", "solicitar servicio"],
         rol: ["USER", "TECHNICAL"],
         responseFunction: startNewService
     },

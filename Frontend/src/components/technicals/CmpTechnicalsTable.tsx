@@ -69,7 +69,7 @@ export const CmpTechnicalsTable = ({ technicals, onUpdate }: any) => {
                 <Table.Td>{formatWorkingHours(item.WorkingHours)}</Table.Td>
                 <Table.Td>
                     <ActionIcon className="action" onClick={() => handleEdit(item)}>
-                        <IconEdit size={16} stroke={1.5} />
+                        <IconEdit size={16} color="green"/>
                     </ActionIcon>
                 </Table.Td>
             </Table.Tr>
