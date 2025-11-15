@@ -23,7 +23,7 @@ services:
       - "3001:3001"
     depends_on:
       - mysql
-    command: ["yarn", "start"] # o "yarn", "dev" para desarrollo
+    command: ["yarn", "start"]
 
   frontend:
     build:
@@ -32,8 +32,11 @@ services:
     restart: always
     env_file:
       - .env
+    volumes:
+      - ./Frontend:/app    # <- hot reload con Vite
+      - /app/node_modules
     ports:
-      - "5173:80"
+      - "5173:5173"
     depends_on:
       - backend
 
