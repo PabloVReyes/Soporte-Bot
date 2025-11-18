@@ -42,7 +42,6 @@ export const getTechnicalsNotAssignedQuery = async (excludeTechnicalId?: number)
         return nowMinutes >= checkInMinutes && nowMinutes <= departureMinutes;
     });
 
-    console.log(availableTechnicians)
     return availableTechnicians
 }
 

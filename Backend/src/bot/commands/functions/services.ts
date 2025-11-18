@@ -50,7 +50,7 @@ export const newService = async ({ message, phone, sock }: Props) => {
         return Messages.service.new.success.technical
     }
 
-    await sock.sendMessage(phone, {
+    await sock.sendMessage(technical.id, {
         text: Messages.service.new.success.assigned(service, service.user)
     })
 
