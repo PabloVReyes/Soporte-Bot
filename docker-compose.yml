@@ -19,6 +19,8 @@ services:
       - .env
     volumes:
       - ./session:/auth
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
     ports:
       - "3001:3001"
     depends_on:
@@ -34,6 +36,9 @@ services:
       - "80:80"
     depends_on:
       - backend
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
 
 volumes:
   mysql_data:
