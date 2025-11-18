@@ -30,15 +30,11 @@ services:
       context: ./Frontend
     container_name: frontend_app
     restart: always
-    env_file:
-      - .env
-    volumes:
-      - ./Frontend:/app    # <- hot reload con Vite
-      - /app/node_modules
     ports:
-      - "5173:5173"
+      - "80:80"
     depends_on:
       - backend
 
 volumes:
   mysql_data:
+
