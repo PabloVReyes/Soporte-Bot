@@ -5,10 +5,14 @@ services:
     restart: always
     env_file:
       - .env
+    environment:
+      - TZ=America/Mexico_City
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
 
   backend:
     build:
@@ -17,10 +21,12 @@ services:
     restart: always
     env_file:
       - .env
+    environment:
+      - TZ=America/Mexico_City
     volumes:
       - ./session:/auth
       - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
     ports:
       - "3001:3001"
     depends_on:
@@ -32,14 +38,15 @@ services:
       context: ./Frontend
     container_name: frontend_app
     restart: always
+    environment:
+      - TZ=America/Mexico_City
     ports:
       - "80:80"
-    depends_on:
-      - backend
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+    depends_on:
+      - backend
 
 volumes:
   mysql_data:
-

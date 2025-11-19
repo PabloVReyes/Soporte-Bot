@@ -1,6 +1,6 @@
 export const Messages = {
     welcome: {
-        welcome: "¡Hola! 👋\n\nSoy un asistente virtual 🤖 diseñado para apoyarte con tus solicitudes y requerimientos técnicos.\n\nCuando presentes algún inconveniente, me encargaré de registrarlo y notificar al equipo de soporte para que te brinden atención de manera oportuna.\n\nSi deseas conocer todas las funciones que tengo disponibles, solo envíame la palabra Comandos.\n\nActualmente me encuentro en versión BETA y fui actualizado por última vez el 12 de noviembre de 2025.\n\nAntes de continuar necesito saber algunos datos"
+        welcome: "¡Hola! 👋\n\nSoy un asistente virtual 🤖 diseñado para apoyarte con tus solicitudes y requerimientos técnicos.\n\nCuando presentes algún inconveniente, me encargaré de registrarlo y notificar al equipo de soporte para que te brinden atención de manera oportuna.\n\nSi deseas conocer todas las funciones que tengo disponibles, solo envíame la palabra Comandos.\n\nActualmente me encuentro en versión BETA y fui actualizado por última vez el 19 de noviembre de 2025.\n\nAntes de continuar necesito saber algunos datos"
     },
     matricula: {
         ask: "📘 Por favor, ingresa tu *Matrícula* (4 dígitos).\n\nEjemplo: 6792",
