@@ -37,7 +37,7 @@ export const Messages = {
             },
             success: {
                 technical: "🥸 El servicio se te fue asignado, suerte para la próxima...",
-                assigned: (service: any, user: any) => `🥸 Se te ha asignado un nuevo servicio:\n\n🎟️ *Numero de servicio:* ${service.id}\nℹ️ *Informacion:* ${service.description}\n😺 *Matricula:* ${user.matricula || "N/D"}\n🏬 *Area:* ${user.area || "N/D"}\n☎️ *Extension Telefonica:* ${user.extension || "N/D"}\n💻 *Direccion IP:* ${user.ip || "N/D"}`,
+                assigned: (service: any, user: any) => `🥸 Se te ha asignado un nuevo servicio:\n\n🎟️ *Numero de servicio:* ${service.id}\nℹ️ *Informacion:* ${service.description}\n😺 *Matricula:* ${user.matricula || "N/D"}\n🏬 *Area:* ${user.area || "N/D"}\n☎️ *Extension Telefonica:* ${user.ext || "N/D"}\n💻 *Direccion IP:* ${user.ip || "N/D"}`,
                 user: (technical: string) => `🥸 Tu servicio es el siguiente...\n\n*🧑‍💻 Técnico asignado*\n ${technical}`
             }
         },
@@ -56,7 +56,7 @@ export const Messages = {
             error: `🤔 No tienes ningún servicio que puedas cancelar`,
             success: {
                 user: `🥺 Tu servicio se ha cancelado\n\nLamento no poder ayudarte esta vez.`,
-                technical: (service: any, user: any) => `😓 El servicio ha sido cancelado:\n\n🎟️ *Número de servicio:* ${service.id}\nℹ️ *Descripción:* ${service.description}\n😺 *Matrícula:* ${user.matricula}\n🏬 *Área:* ${user.area}\n☎️ *Extensión telefónica:* ${user.extension}\n💻 *Dirección IP:* ${user.ip}`
+                technical: (service: any, user: any) => `😓 El servicio ha sido cancelado:\n\n🎟️ *Número de servicio:* ${service.id}\nℹ️ *Descripción:* ${service.description}\n😺 *Matrícula:* ${user.matricula}\n🏬 *Área:* ${user.area}\n☎️ *Extensión telefónica:* ${user.ext}\n💻 *Dirección IP:* ${user.ip}`
             }
         },
         paused: {
