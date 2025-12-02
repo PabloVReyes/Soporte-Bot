@@ -1,4 +1,4 @@
-import { database } from "src/database/config"
+import { database } from "../database/config"
 
 export const getRolesQuery = () => {
     return new Promise(async (resolve, reject) => {
