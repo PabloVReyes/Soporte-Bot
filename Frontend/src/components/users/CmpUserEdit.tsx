@@ -175,7 +175,7 @@ export const CmpUserEdit = (user: Props) => {
 
                 <Divider />
 
-                {isRole("TECHNICAL") || isRole("TECHNICAL_SUPPORT_MANAGER") && <CmpTechnicalEdit form={form} />}
+                {(isRole("TECHNICAL") || isRole("TECHNICAL_SUPPORT_MANAGER")) && <CmpTechnicalEdit form={form} />}
 
                 <Group justify="flex-end" gap={5}>
                     <Button
