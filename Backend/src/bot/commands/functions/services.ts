@@ -1,6 +1,6 @@
 import { io } from "../../../socket";
 import { getLastPausedServiceQuery, getPausedServiceQuery, getServiceAssigned, getServiceCanceledQuery, getServicesNotAssigned, saveServiceQuery, updateServiceQuery } from "../../../bot/helpers/services.query";
-import { getIsTechnicalNotAssigned, getTechnicalsNotAssignedQuery } from "../../../bot/helpers/technicals.query";
+import { getIsTechnicalNotAssigned, getTechnicalServicesCountToday, getTechnicalsNotAssignedQuery } from "../../../bot/helpers/technicals.query";
 import { updateUserDataQuery } from "../../../bot/helpers/users.query";
 import { Messages } from "../../../bot/messages";
 import { isWithinWorkingHours } from "../../../bot/utils/working-hours";
@@ -34,13 +34,31 @@ export const newService = async ({ message, phone, sock }: Props) => {
 
     io.emit("updateData", { entity: "service", action: "create" });
 
+    // Obtener tecnicos disponibles
     const technicals = await getTechnicalsNotAssignedQuery()
+    console.log(technicals)
 
     if (technicals.length <= 0) {
         return Messages.service.new.error.technical
     }
 
-    const technical: any = technicals[Math.floor(Math.random() * technicals.length)]
+    // Elegir tecnico con MENOS servicios hoy
+    // Obtener conteo de servicios por tecnico
+    const technicalsWithCount = await Promise.all(
+        technicals.map(async tech => {
+            const count = await getTechnicalServicesCountToday(tech.id)
+            return {
+                ...tech,
+                servicesToday: count
+            }
+        })
+    )
+
+    // Ordenar por menor cantidad de servicios
+    technicalsWithCount.sort((a, b) => a.servicesToday - b.servicesToday)
+
+    // Tomar el que tenga menos
+    const technical: any = technicalsWithCount[0]
 
     await updateServiceQuery(service.id, { technicalId: technical.id, assignedAt: new Date() })
 

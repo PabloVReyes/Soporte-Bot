@@ -76,6 +76,13 @@ export const bot = async () => {
         const message = msg.message.conversation || msg.message.extendedTextMessage?.text;
         if (!message || phone === "status@broadcast") return;
 
+        if (process.env.NODE_ENV === "maintenance" && process.env.ADMIN != phone) {
+            await sock.sendMessage(phone, {
+                text: `*¡Atencion!*\n\n🛠️ Por el momento me estan realizando mantenimiento, vuelve a intentarlo en unos minutos\n\nUna disculpa por los incovenientes`
+            })
+            return;
+        }
+
         console.log(`📩 Mensaje recibido de ${phone}: ${message}`);
 
         // Obtener datos del usuario
@@ -101,7 +108,7 @@ export const bot = async () => {
                         return;
                     }
 
-                    if(await getUserDataByMatriculaQuery(match[0])) {
+                    if (await getUserDataByMatriculaQuery(match[0])) {
                         await sock.sendMessage(phone, {
                             text: Messages.matricula.error(match[0])
                         })
@@ -167,8 +174,8 @@ export const bot = async () => {
             }
         }
 
-        if(User.conversationStep === 'awaiting_service_description') {
-            const response = await newService({message: message, phone: phone, sock: sock})
+        if (User.conversationStep === 'awaiting_service_description') {
+            const response = await newService({ message: message, phone: phone, sock: sock })
             await sock.sendMessage(phone, {
                 text: response
             })
@@ -176,8 +183,8 @@ export const bot = async () => {
         }
 
         const command = await detectCommand(User.rol.name, message)
-        if(command) {
-            const response = await command.responseFunction({rol: User.rol.name, phone: phone, sock: sock})
+        if (command) {
+            const response = await command.responseFunction({ rol: User.rol.name, phone: phone, sock: sock })
             await sock.sendMessage(phone, {
                 text: response
             })

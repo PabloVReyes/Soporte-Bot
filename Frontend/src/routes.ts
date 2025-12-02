@@ -1,9 +1,10 @@
-import { IconAssemblyFilled, IconDashboardFilled, IconDeviceHeartMonitorFilled, IconUserFilled } from "@tabler/icons-react";
+import { IconDashboardFilled, IconDeviceHeartMonitorFilled, IconUserFilled } from "@tabler/icons-react";
 
 interface Props {
     label: string;
     icon: any;
     link?: string;
+    links?: any[]
 }
 
 export const routes: Props[] = [
@@ -15,16 +16,20 @@ export const routes: Props[] = [
     {
         label: "Servicios",
         icon: IconDeviceHeartMonitorFilled,
-        link: '/Services'
+        link: '/services'
     },
     {
         label: "Usuarios",
         icon: IconUserFilled,
-        link: "/Users"
+        links: [
+            {
+                label: "Usuarios",
+                link: "/users"
+            },
+            {
+                label: "Personal del área",
+                link: "/users/area-staff"
+            }
+        ]
     },
-    {
-        label: "Técnicos",
-        icon: IconAssemblyFilled,
-        link: "/Technicals"
-    }
 ]

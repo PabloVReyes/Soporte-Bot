@@ -1,7 +1,7 @@
 import { Layout } from "@/layout";
 import { Home } from "@/pages/Home";
 import { Services } from "@/pages/Services";
-import { Technicals } from "@/pages/Technicals";
+import { AreaStaff } from "@/pages/AreaStaff";
 import { Users } from "@/pages/Users";
 import type { RouteObject } from "react-router-dom";
 
@@ -21,13 +21,18 @@ export const routes: RouteObject[] = [
                 element: <Services />
             },
             {
-                path: "/users",
-                element: <Users />
+                path: "users",
+                children: [
+                    {
+                        index: true,
+                        element: <Users />,
+                    },
+                    {
+                        path: "area-staff",
+                        element: <AreaStaff />
+                    }
+                ]
             },
-            {
-                path: "/technicals",
-                element: <Technicals />
-            }
         ]
     }
 ]

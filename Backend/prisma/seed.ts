@@ -10,23 +10,16 @@ async function main() {
         data: [
             { name: "NEW" },
             { name: "USER" },
-            { name: "TECHNICAL" }
+            { name: "TECHNICAL" },
+            { name: "TECHNICAL_SUPPORT_MANAGER" }
         ],
         skipDuplicates: true,
     })
 
-    await prisma.user.create({
-        data: {
-            id: "5212261048352@s.whatsapp.net",
-            name: "Pablo Vazquez Reyes",
-            rol: { connect: { name: "TECHNICAL" } },
-        }
-    })
-
     // await prisma.user.create({
     //     data: {
-    //         id: "5212281467754@s.whatsapp.net",
-    //         name: "Dylan Alejandro Velasquez Leonardo",
+    //         id: "5212261048352@s.whatsapp.net",
+    //         name: "Pablo Vazquez Reyes",
     //         rol: { connect: { name: "TECHNICAL" } },
     //     }
     // })
@@ -37,7 +30,6 @@ async function main() {
 main()
     .catch((e) => {
         console.error(e)
-        process.exit(1)
     })
     .finally(async () => {
         await prisma.$disconnect()

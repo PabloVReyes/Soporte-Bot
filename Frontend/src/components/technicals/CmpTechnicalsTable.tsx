@@ -1,15 +1,15 @@
 import { useModalStore } from "@/store/UIStore";
 import { ActionIcon, Badge, Table, Text } from "@mantine/core";
 import { IconEdit } from "@tabler/icons-react";
-import { CmpTechnicalEdit } from "./CmpTechnicalEdit";
+import { CmpUserEdit } from "../users/CmpUserEdit";
 
-export const CmpTechnicalsTable = ({ technicals, onUpdate }: any) => {
+export const CmpTechnicalsTable = ({ technicals }: any) => {
     const { openModal } = useModalStore();
 
     const handleEdit = (technical: any) => {
         openModal({
             title: "Editar información técnico",
-            content: <CmpTechnicalEdit technical={technical} onUpdate={onUpdate}/>,
+            content: <CmpUserEdit {...technical} />,
         });
     };
 
@@ -57,6 +57,16 @@ export const CmpTechnicalsTable = ({ technicals, onUpdate }: any) => {
     };
 
     const renderRows = () => {
+        if (technicals.length < 1) {
+            return (
+                <Table.Tr>
+                    <Table.Td colSpan={6} style={{ textAlign: 'center' }}>
+                        <Text size="sm" c="dimmed">No hay tecnicos registrados</Text>
+                    </Table.Td>
+                </Table.Tr>
+            )
+        }
+
         return technicals.map((item: any, index: number) => (
             <Table.Tr key={index}>
                 <Table.Td>{item.phone}</Table.Td>
@@ -67,9 +77,9 @@ export const CmpTechnicalsTable = ({ technicals, onUpdate }: any) => {
                     </Badge>
                 </Table.Td>
                 <Table.Td>{formatWorkingHours(item.WorkingHours)}</Table.Td>
-                <Table.Td>
+                <Table.Td style={{ textAlign: 'center' }}>
                     <ActionIcon className="action" onClick={() => handleEdit(item)}>
-                        <IconEdit size={16} color="green"/>
+                        <IconEdit size={16} stroke={1.5} />
                     </ActionIcon>
                 </Table.Td>
             </Table.Tr>
@@ -85,7 +95,7 @@ export const CmpTechnicalsTable = ({ technicals, onUpdate }: any) => {
                         <Table.Th>Nombre</Table.Th>
                         <Table.Th>Estado</Table.Th>
                         <Table.Th>Horarios</Table.Th>
-                        <Table.Th>Acciones</Table.Th>
+                        <Table.Th style={{ textAlign: 'center' }}>Acciones</Table.Th>
                     </Table.Tr>
                 </Table.Thead>
                 <Table.Tbody>{renderRows()}</Table.Tbody>

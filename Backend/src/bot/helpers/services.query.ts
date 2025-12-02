@@ -152,7 +152,7 @@ export const getPausedServiceQuery = async (phone: string) => {
                 },
                 assignedAt: { not: null },
                 concludedAt: null,
-                pausedAt: null
+                pausedAt: { not: null }
             },
             include: {
                 technical: true,

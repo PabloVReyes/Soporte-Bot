@@ -7,7 +7,12 @@ export const getTechnicalsNotAssignedQuery = async (excludeTechnicalId?: number)
     const currentDay = daysOfWeek[now.getDay()];
 
     const whereClause: any = {
-        rol: { name: 'TECHNICAL' },
+        rol: {
+            OR: [
+                { name: 'TECHNICAL' },
+                { name: 'TECHNICAL_SUPPORT_MANAGER' }
+            ]
+        },
         ServiceAssigned: {
             none: {
                 assignedAt: { not: null },
@@ -65,4 +70,22 @@ export const getIsTechnicalNotAssigned = async (phone: string) => {
         console.error("Error al verificar si el técnico está libre:", error);
         return false;
     }
+}
+
+export const getTechnicalServicesCountToday = async (technicalId: string) => {
+    const start = new Date();
+    start.setHours(0, 0, 0, 0);
+
+    const end = new Date();
+    end.setHours(23, 59, 59, 999);
+
+    return database.service.count({
+        where: {
+            technicalId,
+            assignedAt: {
+                gte: start,
+                lte: end
+            }
+        }
+    });
 }

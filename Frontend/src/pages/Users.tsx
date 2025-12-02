@@ -1,15 +1,14 @@
 // import { useSocket } from "@/context/SocketContext"
-import { getUsers } from "@/api/users";
 import { CmpUsersTable } from "@/components/users/CpmUsersTable";
+import { useUserStore } from "@/store/userStore";
 import { Card, Container, Group, Stack, Text, Title } from "@mantine/core"
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export const Users = () => {
-    const [users, setUsers] = useState<any[]>([])
+    const { users, fetchUsers } = useUserStore();
 
     useEffect(() => {
-        getUsers()
-            .then(setUsers)
+        fetchUsers()
     }, [])
     
     return (

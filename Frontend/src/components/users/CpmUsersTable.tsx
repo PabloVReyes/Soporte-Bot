@@ -1,6 +1,18 @@
-import { Badge, Table, Text } from "@mantine/core"
+import { useModalStore } from "@/store/UIStore"
+import { ActionIcon, Badge, Table, Text } from "@mantine/core"
+import { IconEdit } from "@tabler/icons-react"
+import { CmpUserEdit } from "./CmpUserEdit"
 
 export const CmpUsersTable = ({ users }: any) => {
+    const { openModal } = useModalStore()
+
+    const handleEdit = (user: any) => {
+        openModal({
+            title: "Editar informacion del usuario",
+            content: <CmpUserEdit {...user} />
+        })
+    }
+
     const renderRows = () => {
         if (users.length < 1) {
             return (
@@ -24,6 +36,11 @@ export const CmpUsersTable = ({ users }: any) => {
                         {item.rol}
                     </Badge>
                 </Table.Td>
+                <Table.Td style={{ textAlign: 'center' }}>
+                    <ActionIcon className="action" onClick={() => handleEdit(item)}>
+                        <IconEdit size={16} stroke={1.5} />
+                    </ActionIcon>
+                </Table.Td>
             </Table.Tr>
         ))
     }
@@ -38,7 +55,8 @@ export const CmpUsersTable = ({ users }: any) => {
                         <Table.Th>Área</Table.Th>
                         <Table.Th>Extensión Telefónica</Table.Th>
                         <Table.Th>Dirección IP</Table.Th>
-                        <Table.Th>Tipo</Table.Th>
+                        <Table.Th>Rol</Table.Th>
+                        <Table.Th style={{ textAlign: 'center' }}>Acciones</Table.Th>
                     </Table.Tr>
                 </Table.Thead>
                 <Table.Tbody>

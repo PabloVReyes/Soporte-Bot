@@ -7,7 +7,7 @@ export const getCommandsByRol = async ({rol}: {rol: string}) => {
 
     const allCommandsText = availableCommands
         .map(cmd => {
-            return `\n🔹 *${cmd.name}*\n`
+            return `\n🔹 *${cmd.name}*\n${cmd.description}\n`
         })
         .join("")
 

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import userRoutes from "../routes/users.routes"
 import servicesRoutes from "../routes/services.routes"
-import technicalRoutes from "../routes/technicals.routes"
+import rolesRoutes from "../routes/roles.routes"
 
 const router: Router = Router()
 
@@ -22,6 +22,6 @@ router.get('/', (request, response) => {
 
 router.use("/api/users", userRoutes)
 router.use("/api/services", servicesRoutes)
-router.use("/api/technicals", technicalRoutes)
+router.use("/api/roles", rolesRoutes)
 
 module.exports = router;

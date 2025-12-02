@@ -1,35 +1,31 @@
-import { getTechnicals } from "@/api/technicals"
 import { CmpTechnicalsTable } from "@/components/technicals/CmpTechnicalsTable"
-import { useServiceStore } from "@/store/serviceStore"
+import { useUserStore } from "@/store/userStore"
 import { Card, Container, Group, Stack, Text, Title } from "@mantine/core"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
-export const Technicals = () => {
-    const [technicals, setTechnicals] = useState<any[]>([])
-
-    const {
-        shouldReload,
-        setShouldReload,
-    } = useServiceStore();
-
-    const loadData = async () => {
-        const data = await getTechnicals();
-        setTechnicals(data);
-    };
+export const AreaStaff = () => {
+    const { technicals, fetchTechnicals, fetchTechnicalsSupportManager, technicalsSupportManager } = useUserStore();
 
     useEffect(() => {
-        if (shouldReload) {
-            loadData().then(() => setShouldReload(false));
-        }
-    }, [shouldReload, setShouldReload]);
-
-    useEffect(() => {
-        loadData()
-    }, [])
+        fetchTechnicals()
+        fetchTechnicalsSupportManager()
+    }, []);
 
     return (
         <Container>
             <Stack gap="md">
+                <Group>
+                    <Stack gap={1} style={{ flex: '1 1 auto' }}>
+                        <Title order={2}>Encargado del área de soporte tecnico</Title>
+                    </Stack>
+                </Group>
+
+                <Card>
+                    <CmpTechnicalsTable
+                        technicals={technicalsSupportManager}
+                    />
+                </Card>
+
                 <Group>
                     <Stack gap={1} style={{ flex: '1 1 auto' }}>
                         <Title order={2}>Lista de tecnicos</Title>
@@ -39,7 +35,6 @@ export const Technicals = () => {
 
                 <Card>
                     <CmpTechnicalsTable
-                        onUpdate={loadData}
                         technicals={technicals}
                     />
                 </Card>
