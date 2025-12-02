@@ -158,7 +158,11 @@ export const canceledService = async ({ phone, sock }: Props) => {
         // Buscar un nuevo servicio y asignarlo al tecnico
         const newService = await getServicesNotAssigned();
         if (!newService) {
-            return Messages.service.concluded.success.notAssigned
+            await sock.sendMessage(service.technicalId, {
+                text: Messages.service.concluded.success.notAssigned
+            })
+
+            return Messages.service.canceled.success.user
         }
 
         // Si existe un servicio, asignarlo
