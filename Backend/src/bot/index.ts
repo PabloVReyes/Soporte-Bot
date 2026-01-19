@@ -11,8 +11,8 @@ import qrcode from "qrcode-terminal";
 import { getUserDataByMatriculaQuery, getUserDataQuery, updateUserDataQuery, updateUserRol } from "./helpers/users.query";
 import { UserProps } from "./types";
 import { Messages } from "./messages";
-import { newService } from "./commands/functions/services";
 import { detectCommand } from "./utils/detect-commands";
+import { New } from "./commands/services/new/New";
 
 
 export const bot = async () => {
@@ -175,7 +175,7 @@ export const bot = async () => {
         }
 
         if (User.conversationStep === 'awaiting_service_description') {
-            const response = await newService({ message: message, phone: phone, sock: sock })
+            const response = await New({ message: message, phone: phone, sock: sock })
             await sock.sendMessage(phone, {
                 text: response
             })
